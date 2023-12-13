@@ -1,17 +1,22 @@
 body {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+button {
+    margin-top: 20px;
+}
 #container {
     display: flex;
     flex-wrap: wrap;
     width: 50%;
+    margin-top: 50px;
+    aspect-ratio: 1 / 1;
 }
 
 .div{
     flex: 1 0 21%;
-    aspect-ratio: 1 / 1;
     border-style: solid;
     border-color: black;
     border-width: 1px;
