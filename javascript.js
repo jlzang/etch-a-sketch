@@ -1,13 +1,13 @@
 
 const container = document.querySelector('#container');
 
-let defaultDivs;
+let defaultSquares;
 
 for (let i = 0; i < 256; i++) {
-    defaultDivs = document.createElement('div');
-    defaultDivs.classList.add('div');
-    container.appendChild(defaultDivs);
-    defaultDivs.style.width = "31.25px";
+    defaultSquares = document.createElement('div');
+    defaultSquares.classList.add('div');
+    container.appendChild(defaultSquares);
+    defaultSquares.style.width = "31.25px";
 }
 
 container.addEventListener('mouseover', (event) => {
@@ -32,8 +32,8 @@ function randomLightness(min, max) {
 
 function randomHsl() {
     let h = randomHue();
-    let s = randomSaturation(55, 80);
-    let l = randomLightness(40, 60);
+    let s = randomSaturation(80, 90);
+    let l = randomLightness(60, 80);
     return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
@@ -45,26 +45,18 @@ btn.addEventListener('click', () => {
         alert("Invalid input, please try again!");
         return;
     };
-    if (container.contains(defaultDivs)) {
+    if (container.contains(defaultSquares)) {
         while (container.firstChild) {
             container.removeChild(container.lastChild);
         };
     };
-let sizeOfSquare = 500 / numberOfSquares;
+    let sizeOfSquare = (500 / `${numberOfSquares}`) + 'px';
+    console.log(sizeOfSquare);
 
-for (i = 0; i < numberOfSquares; i++) {
-
-}
-});
-
-/*function createGridRow(num) {
-    for (let i = 0; i < num; i++) {
-        newDivs = document.createElement('div');
-        newDivs.classList.add('div');
-        container.appendChild(newDivs);
-
+    for (i = 0; i < numberOfSquares; i++) {
+        let newColumn = document.createElement('div');
+        newColumn.style.width = sizeOfSquare;
+        newColumn.classList.add('column');
+        container.appendChild(newColumn);
     }
-}
-function createNewGrid(num) {
-
-}*/
+});
