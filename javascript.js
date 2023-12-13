@@ -12,7 +12,7 @@ container.addEventListener('mouseover', (event) => {
     event.target.style.backgroundColor = randomHsl();
 })
 
-function randomHue() {
+/*function randomHue() {
 return Math.floor(Math.random() * 360);
 }
 
@@ -33,5 +33,4 @@ function randomHsl() {
     let s = randomSaturation(50, 80);
     let l = randomLightness(40, 60);
     return `hsl(${h}, ${s}%, ${l}%)`;
-}
-console.log(randomHsl())
+}*/
