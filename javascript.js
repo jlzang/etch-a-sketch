@@ -2,6 +2,7 @@
 const container = document.querySelector('#container');
 
 let defaultSquares;
+let newColumn;
 
 for (let i = 0; i < 256; i++) {
     defaultSquares = document.createElement('div');
@@ -11,7 +12,8 @@ for (let i = 0; i < 256; i++) {
 }
 
 container.addEventListener('mouseover', (event) => {
-    event.target.style.backgroundColor = randomHsl();
+    if (container.contains(defaultSquares)) { event.target.style.backgroundColor = randomHsl() };
+    return;
 })
 
 function randomHue() {
@@ -49,14 +51,34 @@ btn.addEventListener('click', () => {
         while (container.firstChild) {
             container.removeChild(container.lastChild);
         };
-    };
+    } else if (container.contains(newColumn)) {
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        };
+    }
     let sizeOfSquare = (500 / `${numberOfSquares}`) + 'px';
     console.log(sizeOfSquare);
 
-    for (i = 0; i < numberOfSquares; i++) {
-        let newColumn = document.createElement('div');
+    for (let j = 0; j < numberOfSquares; j++) {
+        newColumn = document.createElement('div');
         newColumn.style.width = sizeOfSquare;
         newColumn.classList.add('column');
+
+        for (k = 0; k < numberOfSquares; k++) {
+            let newRow = document.createElement('div');
+            newRow.style.height = sizeOfSquare;
+            newRow.classList.add('row');
+            newColumn.appendChild(newRow);
+        }
         container.appendChild(newColumn);
     }
+
+    const row = document.querySelectorAll('.row');
+
+    row.forEach((item) => {
+        item.addEventListener('mouseover', (event) => {
+            event.target.style.backgroundColor = randomHsl();
+        });
+    });
 });
+
