@@ -1,20 +1,20 @@
 
 const container = document.querySelector('#container');
 
-for (let i = 0; i < 16; i++) {
-    let divs = document.createElement('div');
-    divs.classList.add('div');
-    container.appendChild(divs);
-}
+let defaultDivs;
 
-const divs = document.querySelector('.div');
+for (let i = 0; i < 16; i++) {
+    defaultDivs = document.createElement('div');
+    defaultDivs.classList.add('div');
+    container.appendChild(defaultDivs);
+}
 
 container.addEventListener('mouseover', (event) => {
     event.target.style.backgroundColor = randomHsl();
 })
 
 function randomHue() {
-return Math.floor(Math.random() * 360);
+    return Math.floor(Math.random() * 360);
 }
 
 function randomSaturation(min, max) {
@@ -40,15 +40,26 @@ const btn = document.querySelector('#btn');
 
 btn.addEventListener('click', () => {
     let newGrid = Number(prompt("Please enter a number 1-100."));
-    if (isNaN(newGrid) || newGrid < 1 || newGrid > 100)
-    alert("Invalid input, please try again!")
+    if (isNaN(newGrid) || newGrid < 1 || newGrid > 100) {
+        alert("Invalid input, please try again!");
+        return;
+    };
+    if (container.contains(defaultDivs)) {
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        }
+    }
+
 })
 
-function createGridRow(num) {
+/*function createGridRow(num) {
     for (let i = 0; i < num; i++) {
+        newDivs = document.createElement('div');
+        newDivs.classList.add('div');
+        container.appendChild(newDivs);
 
     }
 }
 function createNewGrid(num) {
 
-}
+}*/
