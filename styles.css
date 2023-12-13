@@ -30,3 +30,10 @@ button {
     border-color: black;
     border-width: 1px;
 }
+
+.row{
+    flex-direction: column;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
