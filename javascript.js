@@ -3,6 +3,7 @@ const container = document.querySelector('#container');
 
 let defaultSquares;
 let newColumn;
+let newRow;
 
 for (let i = 0; i < 256; i++) {
     defaultSquares = document.createElement('div');
@@ -11,10 +12,13 @@ for (let i = 0; i < 256; i++) {
     defaultSquares.style.width = "31.25px";
 }
 
-container.addEventListener('mouseover', (event) => {
-    if (container.contains(defaultSquares)) { event.target.style.backgroundColor = randomHsl() };
-    return;
-})
+let defaults = document.querySelectorAll('.div');
+defaults.forEach((item) => {
+    item.addEventListener('mouseover', (event) => {
+        event.target.style.backgroundColor = randomHsl();
+    });
+});
+
 
 function randomHue() {
     return Math.floor(Math.random() * 360);
@@ -56,17 +60,24 @@ btn.addEventListener('click', () => {
             container.removeChild(container.lastChild);
         };
     }
-    let sizeOfSquare = (500 / `${numberOfSquares}`) + 'px';
+    let sizeOfSquare = 500 / `${numberOfSquares}`;
     console.log(sizeOfSquare);
+
+    /*let sizeOfBorder = sizeOfSquare / 100;
+    console.log(sizeOfBorder);*/
 
     for (let j = 0; j < numberOfSquares; j++) {
         newColumn = document.createElement('div');
-        newColumn.style.width = sizeOfSquare;
+        newColumn.style.width = sizeOfSquare + 'px';
+        newColumn.style.height = sizeOfSquare * numberOfSquares;
         newColumn.classList.add('column');
 
         for (k = 0; k < numberOfSquares; k++) {
-            let newRow = document.createElement('div');
-            newRow.style.height = sizeOfSquare;
+            newRow = document.createElement('div');
+            newRow.style.width = sizeOfSquare + 'px';
+            newRow.style.height = sizeOfSquare + 'px';
+            newRow.style.borderStyle = "solid";
+            newRow.style.borderWidth = 0.01 + 'em'
             newRow.classList.add('row');
             newColumn.appendChild(newRow);
         }
