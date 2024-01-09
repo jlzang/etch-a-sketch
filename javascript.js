@@ -93,3 +93,7 @@ btn.addEventListener('click', () => {
     });
 });
 
+/* Things to add:
+-better borders (borders only change to a smaller width when moused over. When a div hasn't been moused over yet the borderwidth
+remains at 0.8px rather than the desired .01em)
+-maintain size of container (border makes it taller for some reason :'))*/
