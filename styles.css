@@ -14,26 +14,24 @@ button {
     width: 500px;
     margin-top: 20px;
     aspect-ratio: 1 / 1;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.5px;
 }
 
 .div{
     border-style: solid;
     border-color: black;
-    border-width: 1px;
+    border-width: 0.5px;
     box-sizing: border-box;
+    aspect-ratio: 1 / 1;
 }
 
 .column{
     flex-direction: row;
     flex: 1;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
 }
 
 .row{
     flex-direction: column;
-    border-style: solid;
-    border-color: black;
-    border-width: 1px;
 }
